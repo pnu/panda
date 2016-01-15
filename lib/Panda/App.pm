@@ -27,7 +27,7 @@ sub make-default-ecosystem(Str $prefix?) is export {
     unless $prefix or $target eq CompUnit::RepositoryRegistry.repository-for-name('site') {
         for @repos {
             unless $target eq $_ {
-                @extra-statefiles.push($target.prefix.child('panda').child('state'));
+                @extra-statefiles.push($_.prefix.child('panda').child('state'));
             }
         }
     }
