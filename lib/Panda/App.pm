@@ -25,7 +25,7 @@ sub make-default-ecosystem(Str $prefix?) is export {
 
     my @extra-statefiles;
     unless $prefix or $target eq CompUnit::RepositoryRegistry.repository-for-name('site') {
-        for @repos {
+        for $*REPO.repo-chain.grep(CompUnit::Repository::Installable) {
             unless $target eq $_ {
                 @extra-statefiles.push($_.prefix.child('panda').child('state'));
             }
